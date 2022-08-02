@@ -1,14 +1,10 @@
 package com.apps.bookfarm.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "AUTHOR")
 public class Author {
-
     @Id
     @Column(name = "AUTHOR_ID")
     private Long authorId;
@@ -17,8 +13,7 @@ public class Author {
     @Column(name = "PHONE_NUMBER")
     private int phoneNumber;
 
-    public Author(Long authorId, String authorName, int phoneNumber) {
-        this.authorId = authorId;
+    public Author(String authorName, int phoneNumber) {
         this.authorName = authorName;
         this.phoneNumber = phoneNumber;
     }
