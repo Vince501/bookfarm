@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 public class AuthorController {
+
     private final AuthorRepository authorRepository;
 
     public AuthorController(AuthorRepository authorRepository) {
@@ -17,7 +18,7 @@ public class AuthorController {
 
     //Aggregate root
     @GetMapping("/authors")
-    List<Author> allAuthors (){
+    Iterable<Author> allAuthors (){
         return authorRepository.findAll();
     }
     //end::get-aggregate-root[]
@@ -27,10 +28,29 @@ public class AuthorController {
        return authorRepository.findById(id);
     }
 
+    @GetMapping("/authors/contacts/{phone}")
+    List<Author> authorPhone (@PathVariable int phone){
+        return authorRepository.findByPhoneNumber(phone);
+    }
+
     @PostMapping("/authors")
     Author newAuthor(@RequestBody Author newAuthor){
         return authorRepository.save(newAuthor);
     }
 
+    @DeleteMapping("/authors/{id}")
+    void deleteAuthor(@PathVariable Long id){
+        authorRepository.deleteById(id);
+    }
 
+    @PutMapping("authors/{id}")
+    Author replaceAuthor(@RequestBody Author newAuthor, @PathVariable Long id){
+        return authorRepository.findById(id).map(author -> {
+            author.setAuthorName(newAuthor.getAuthorName());
+            author.setPhoneNumber(newAuthor.getPhoneNumber());
+            return authorRepository.save(newAuthor);
+        }).orElseGet(()->{newAuthor.setAuthorId(id);
+        return authorRepository.save(newAuthor);
+        });
+    }
 }
