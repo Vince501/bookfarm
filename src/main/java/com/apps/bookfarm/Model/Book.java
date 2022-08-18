@@ -14,7 +14,7 @@ public class Book {
     @Column(name = "BOOK_TITLE")
     private String title;
     @ManyToOne
-//  @JoinColumn(name = "AUTHOR_ID")
+    @JoinColumn(name = "AUTHOR_ID")
     private Author author;
     @Column(name = "BOOK_PUBLISHER")
     private String publisher;
@@ -25,9 +25,9 @@ public class Book {
     @Column (name = "BOOK_SUBJECT")
     private String subjects;
 
-    public Book(String title, List<Author> author, String publisher, int isbn, int length, String subjects) {
+    public Book(String title, Author author, String publisher, int isbn, int length, String subjects) {
         this.title = title;
-//        this.author = author;
+        this.author = author;
         this.publisher = publisher;
         this.isbn = isbn;
         this.length = length;
@@ -54,13 +54,13 @@ public class Book {
         this.title = title;
     }
 
-//    public List<Author> getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(List<Author> author) {
-//        this.author = author;
-//    }
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     public String getPublisher() {
         return publisher;
@@ -99,7 +99,7 @@ public class Book {
         return "Book{" +
                 "bookId=" + bookId +
                 ", title='" + title + '\'' +
-//                ", author=" + author +
+                ", author=" + author +
                 ", publisher='" + publisher + '\'' +
                 ", isbn=" + isbn +
                 ", length=" + length +
