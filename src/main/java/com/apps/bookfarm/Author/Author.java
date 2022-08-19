@@ -1,4 +1,4 @@
-package com.apps.bookfarm.Model;
+package com.apps.bookfarm.Author;
 
 import javax.persistence.*;
 

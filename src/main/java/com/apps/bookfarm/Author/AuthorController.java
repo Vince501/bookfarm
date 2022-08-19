@@ -1,11 +1,9 @@
-package com.apps.bookfarm.Controller;
+package com.apps.bookfarm.Author;
 
-import com.apps.bookfarm.Model.Author;
-import com.apps.bookfarm.Repository.AuthorRepository;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class AuthorController {
@@ -24,8 +22,8 @@ public class AuthorController {
     //end::get-aggregate-root[]
 
     @GetMapping("/authors/{id}")
-    Optional<Author> oneAuthor (@PathVariable Long id){
-       return authorRepository.findById(id);
+    Author oneAuthor (@PathVariable Long id){
+       return authorRepository.findById(id).orElseThrow(()-> new AuthorNotFoundException(id));
     }
 
     @GetMapping("/authors/contacts/{phone}")

@@ -1,7 +1,8 @@
 package com.apps.bookfarm.Model;
 
+import com.apps.bookfarm.Author.Author;
+
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
