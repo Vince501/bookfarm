@@ -1,23 +1,28 @@
 package com.apps.bookfarm.Author;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 public class AuthorController {
 
     private final AuthorRepository authorRepository;
+    private final AuthorServiceImpl authorService;
 
-    public AuthorController(AuthorRepository authorRepository) {
+    @Autowired
+    public AuthorController(AuthorRepository authorRepository, AuthorServiceImpl authorService) {
         this.authorRepository = authorRepository;
+        this.authorService = authorService;
     }
 
     //Aggregate root
     @GetMapping("/authors")
     Iterable<Author> allAuthors (){
-        return authorRepository.findAll();
+        return authorService.getAuthors();
     }
     //end::get-aggregate-root[]
 
@@ -32,8 +37,8 @@ public class AuthorController {
     }
 
     @PostMapping("/authors")
-    Author newAuthor(@RequestBody Author newAuthor){
-        return authorRepository.save(newAuthor);
+    public void addNewAuthor(@RequestBody Author newAuthor){
+        authorService.addNewAuthor(newAuthor);
     }
 
     @DeleteMapping("/authors/{id}")

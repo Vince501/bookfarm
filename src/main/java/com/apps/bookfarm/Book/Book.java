@@ -1,8 +1,9 @@
-package com.apps.bookfarm.Model;
+package com.apps.bookfarm.Book;
 
 import com.apps.bookfarm.Author.Author;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -10,11 +11,12 @@ import javax.persistence.*;
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "BOOK_ID")
     private Long bookId;
     @Column(name = "BOOK_TITLE")
     private String title;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "AUTHOR_ID")
     private Author author;
     @Column(name = "BOOK_PUBLISHER")
@@ -35,7 +37,7 @@ public class Book {
         this.subjects = subjects;
     }
 
-    public Book (){
+    public Book() {
 
     }
 
@@ -59,7 +61,7 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor (Author author) {
         this.author = author;
     }
 
