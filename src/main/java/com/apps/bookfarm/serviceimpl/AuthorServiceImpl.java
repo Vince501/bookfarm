@@ -1,12 +1,15 @@
-package com.apps.bookfarm.Author;
+package com.apps.bookfarm.serviceimpl;
 
+import com.apps.bookfarm.model.Author;
+import com.apps.bookfarm.repository.AuthorRepository;
+import com.apps.bookfarm.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AuthorServiceImpl implements AuthorService{
+public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
 

@@ -1,6 +1,6 @@
-package com.apps.bookfarm.Author;
+package com.apps.bookfarm.repository;
 
-import com.apps.bookfarm.Author.Author;
+import com.apps.bookfarm.model.Author;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

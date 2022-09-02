@@ -1,4 +1,6 @@
-package com.apps.bookfarm.Author;
+package com.apps.bookfarm.service;
+
+import com.apps.bookfarm.model.Author;
 
 public interface AuthorService {
     public Iterable<Author> getAuthors();

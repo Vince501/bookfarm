@@ -1,31 +1,24 @@
-package com.apps.bookfarm.Book;
+package com.apps.bookfarm.model;
 
-import com.apps.bookfarm.Author.Author;
+import com.apps.bookfarm.model.Author;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
-@Table(name = "BOOK")
+@Table(name = "Book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "BOOK_ID")
     private Long bookId;
-    @Column(name = "BOOK_TITLE")
     private String title;
     @OneToOne
-    @JoinColumn(name = "AUTHOR_ID")
+    @JoinColumn(name = "author_id")
     private Author author;
-    @Column(name = "BOOK_PUBLISHER")
     private String publisher;
-    @Column (name = "BOOK_ISBN")
     private int isbn;
-    @Column (name = "BOOK_LENGTH")
     private int length;
-    @Column (name = "BOOK_SUBJECT")
     private String subjects;
 
     public Book(String title, Author author, String publisher, int isbn, int length, String subjects) {

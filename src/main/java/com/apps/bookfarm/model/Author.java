@@ -1,17 +1,16 @@
-package com.apps.bookfarm.Author;
+package com.apps.bookfarm.model;
 
 import javax.persistence.*;
 
 @Entity
-@Table (name = "AUTHOR")
+@Table (name = "Author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "AUTHOR_ID")
+    @Column(name = "author_id")
     private Long authorId;
-    @Column(name = "AUTHOR_NAME")
+    @Column(name = "author_name")
     private String authorName;
-    @Column(name = "PHONE_NUMBER")
     private int phoneNumber;
 
     public Author(String authorName, int phoneNumber) {

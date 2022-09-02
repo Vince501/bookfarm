@@ -1,4 +1,4 @@
-package com.apps.bookfarm.Author;
+package com.apps.bookfarm.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
